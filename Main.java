@@ -1,33 +1,22 @@
 public class Main {
     public static void main(String[] args) {
 
-        // Create MenuItem objects
-        MenuItem burger = new MenuItem(1, "Burger", 5.99);
-        MenuItem pizza = new MenuItem(2, "Pizza", 8.49);
-        MenuItem anotherBurger = new MenuItem(1, "Burger", 5.99);
+        MenuItem burger = new FoodItem(1, "Burger", 5.99);
+        MenuItem pizza = new FoodItem(2, "Pizza", 8.49);
+        MenuItem cola = new DrinkItem(3, "Cola", 2.99);
 
-        // Compare MenuItems
-        System.out.println("burger == anotherBurger ? " + burger.equals(anotherBurger));
-        System.out.println();
+        Restaurant r = new Restaurant("FastFood");
+        r.addMenuItem(burger);
+        r.addMenuItem(pizza);
+        r.addMenuItem(cola);
 
-        // Create Restaurant
-        Restaurant restaurant = new Restaurant("Food Palace");
-        restaurant.addMenuItem(burger);
-        restaurant.addMenuItem(pizza);
+        r.sortByPrice();
+        System.out.println(r.filterByPrice(6));
 
-        restaurant.showMenu();
-        System.out.println();
+        Order order = new Order(1001);
+        order.addItem(burger);
+        order.addItem(cola);
 
-        // Create Order
-        Order order1 = new Order(101);
-        order1.addItem(burger);
-        order1.addItem(pizza);
-
-        order1.printOrder();
-        System.out.println();
-
-        // Compare orders
-        Order order2 = new Order(102);
-        System.out.println("order1 == order2 ? " + order1.equals(order2));
+        System.out.println(order);
     }
 }
